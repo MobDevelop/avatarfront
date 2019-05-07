@@ -2,6 +2,7 @@ import React from "react";
 import "./main.scss";
 import axios from "axios";
 import url from "../url.js";
+import { Redirect } from "react-router-dom";
 import { MyDropzone } from "../Dropzone/MyDropZone.js";
 import LoadingOverlay from "react-loading-overlay";
 export class Main extends React.Component {
@@ -61,26 +62,30 @@ export class Main extends React.Component {
       });
   };
   render() {
-    return (
-      <LoadingOverlay
-        active={!this.state.isActive}
-        spinner
-        text="Please wait..."
-        className="spinner"
-      >
-        <div className="subDiv">
-          <MyDropzone receiveFile={file => this.receiveFile(file)} />
-          <label id="imageUrl">{this.state.location}</label>
-          <div className="imageView">
-            <img src={this.state.location} alt="" />
+    if (JSON.parse(window.sessionStorage.getItem("loginInformaion")) != null) {
+      return (
+        <LoadingOverlay
+          active={!this.state.isActive}
+          spinner
+          text="Please wait..."
+          className="spinner"
+        >
+          <div className="subDiv">
+            <MyDropzone receiveFile={file => this.receiveFile(file)} />
+            <label id="imageUrl">{this.state.location}</label>
+            <div className="imageView">
+              <img src={this.state.location} alt="" />
+            </div>
+            <label id="imageUrl">{this.state.plyLocation}</label>
+            <div className="buttonGroup">
+              <button onClick={this.uploadAnother}>Upload another</button>
+              <button onClick={this.downPly}>Down ply</button>
+            </div>
           </div>
-          <label id="imageUrl">{this.state.plyLocation}</label>
-          <div className="buttonGroup">
-            <button onClick={this.uploadAnother}>Upload another</button>
-            <button onClick={this.downPly}>Down ply</button>
-          </div>
-        </div>
-      </LoadingOverlay>
-    );
+        </LoadingOverlay>
+      );
+    } else {
+      return <Redirect to="/" />;
+    }
   }
 }

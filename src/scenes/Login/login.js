@@ -4,7 +4,14 @@ import { connect } from "react-redux";
 import url from "../url.js";
 import userType from "../Actions";
 import { compose } from "recompose";
+import { Redirect } from "react-router-dom";
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      login: false
+    };
+  }
   loginFunc = e => {
     var formData = {};
     formData["username"] = this.refs.l_username.value;
@@ -20,13 +27,13 @@ class Login extends React.Component {
       .then(response => {
         alert(response.status);
         this.saveUser(response.data);
-        window.sessionStorage.setItem(
-          "loginInformaion",
-          JSON.stringify(response.data)
-        );
-        console.log(
-          JSON.parse(window.sessionStorage.getItem("loginInformaion")).firstname
-        );
+        if (response.code === 2) {
+          window.sessionStorage.setItem(
+            "loginInformaion",
+            JSON.stringify(response.data)
+          );
+          this.setState({ login: true });
+        }
       });
     e.preventDefault();
   };
@@ -42,37 +49,41 @@ class Login extends React.Component {
     );
   };
   render() {
-    return (
-      <div className="mainDiv">
-        <form className="loginDiv" onSubmit={this.loginFunc}>
-          <input
-            type="text"
-            id="l_username"
-            className="formInput"
-            placeholder="User name"
-            ref="l_username"
-            required
-          />
-          <input
-            type="text"
-            id="l_password"
-            className="formInput"
-            placeholder="Password"
-            ref="l_password"
-            required
-          />
-          <button id="loginButton" className="formInput">
-            Login
-          </button>
-          <div className="textDiv">
-            Not registered?
-            <a id="signup" href="signup">
-              Create an account
-            </a>
-          </div>
-        </form>
-      </div>
-    );
+    if (this.state.login === true) {
+      return <Redirect to="/main" />;
+    } else {
+      return (
+        <div className="mainDiv">
+          <form className="loginDiv" onSubmit={this.loginFunc}>
+            <input
+              type="text"
+              id="l_username"
+              className="formInput"
+              placeholder="User name"
+              ref="l_username"
+              required
+            />
+            <input
+              type="text"
+              id="l_password"
+              className="formInput"
+              placeholder="Password"
+              ref="l_password"
+              required
+            />
+            <button id="loginButton" className="formInput">
+              Login
+            </button>
+            <div className="textDiv">
+              Not registered?
+              <a id="signup" href="signup">
+                Create an account
+              </a>
+            </div>
+          </form>
+        </div>
+      );
+    }
   }
 }
 const mapDispatchToProps = dispatch => {

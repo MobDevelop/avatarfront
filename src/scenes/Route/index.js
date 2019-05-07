@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { compose } from "recompose";
 import Login from "../Login/login.js";
 import First from "../First";
-import Main from "../MainUpload/main.js";
+import { Main } from "../MainUpload/main.js";
 import { SignUp } from "../Signup/signup.js";
 class Routes extends Component {
   render() {
@@ -17,6 +17,7 @@ class Routes extends Component {
       <Router>
         <Switch>
           <Route path="/" exact component={First} displayType={0} />
+          <Route path="/main" exact component={Main} displayType={0} />
           <Route path="/login" exact component={Login} displayType={0} />
           <Route path="/signup" exact component={SignUp} displayType={0} />
         </Switch>
