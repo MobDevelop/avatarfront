@@ -5,9 +5,6 @@ import url from "../url.js";
 import userType from "../Actions";
 import { compose } from "recompose";
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   loginFunc = e => {
     var formData = {};
     formData["username"] = this.refs.l_username.value;

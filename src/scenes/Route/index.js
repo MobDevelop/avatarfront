@@ -8,14 +8,16 @@ import {
 import { connect } from "react-redux";
 import { compose } from "recompose";
 import Login from "../Login/login.js";
-import Main from "../Main/main.js";
+import First from "../First";
+import Main from "../MainUpload/main.js";
 import { SignUp } from "../Signup/signup.js";
 class Routes extends Component {
   render() {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact component={Login} displayType={0} />
+          <Route path="/" exact component={First} displayType={0} />
+          <Route path="/login" exact component={Login} displayType={0} />
           <Route path="/signup" exact component={SignUp} displayType={0} />
         </Switch>
       </Router>

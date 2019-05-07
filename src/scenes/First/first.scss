@@ -1,0 +1,71 @@
+.firstDiv {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .header {
+    margin-top: 30px;
+    width: 100%;
+    height: 70px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: flex-start;
+    .leftTitle {
+      width: 50%;
+      label {
+        color: blue;
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-left: 20%;
+      }
+    }
+    .rightTitle {
+      display: flex;
+      width: 50%;
+      justify-content: center;
+      align-items: center;
+      a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: blue;
+      }
+    }
+  }
+  .subHeader {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    label {
+      font-size: 50px;
+    }
+  }
+  .smallHeader {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    label {
+      font-size: 15px;
+      color: gray;
+    }
+  }
+  .fundingText {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    label {
+      font-size: 15px;
+      color: gray;
+    }
+  }
+  .imageView {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    img {
+      height: 200px;
+      width: auto;
+    }
+  }
+}
