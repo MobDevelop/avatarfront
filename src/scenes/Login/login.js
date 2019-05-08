@@ -26,8 +26,8 @@ class Login extends React.Component {
       .then(response => response.json())
       .then(response => {
         alert(response.status);
-        this.saveUser(response.data);
         if (response.code === 2) {
+          this.saveUser(response.data);
           window.sessionStorage.setItem(
             "loginInformaion",
             JSON.stringify(response.data)
@@ -38,19 +38,15 @@ class Login extends React.Component {
     e.preventDefault();
   };
   saveUser = data => {
-    this.props.saveUser(
-      userType.SET_USER,
-      data.firstname,
-      data.lastname,
-      data.username,
-      data.emailaddress,
-      data.mobilephone,
-      data.password
-    );
+    this.props.saveUser(userType.SET_USER, data);
   };
   render() {
     if (this.state.login === true) {
-      return <Redirect to="/main" />;
+      if (
+        JSON.parse(window.sessionStorage.getItem("loginInformaion")).role === 1
+      )
+        return <Redirect to="/showall" />;
+      else return <Redirect to="/main" />;
     } else {
       return (
         <div className="mainDiv">
@@ -88,23 +84,10 @@ class Login extends React.Component {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    saveUser: (
-      type,
-      firstname,
-      lastname,
-      username,
-      emailaddress,
-      mobilephone,
-      password
-    ) => {
+    saveUser: (type, userData) => {
       dispatch({
         type: type,
-        firstname: firstname,
-        lastname: lastname,
-        username: username,
-        emailaddress: emailaddress,
-        mobilephone: mobilephone,
-        password: password
+        userData
       });
     }
   };

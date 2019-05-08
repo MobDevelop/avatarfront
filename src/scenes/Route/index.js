@@ -11,6 +11,7 @@ import Login from "../Login/login.js";
 import First from "../First";
 import { Main } from "../MainUpload/main.js";
 import { SignUp } from "../Signup/signup.js";
+import { ShowAll } from "../ShowAll";
 class Routes extends Component {
   render() {
     return (
@@ -20,6 +21,7 @@ class Routes extends Component {
           <Route path="/main" exact component={Main} displayType={0} />
           <Route path="/login" exact component={Login} displayType={0} />
           <Route path="/signup" exact component={SignUp} displayType={0} />
+          <Route path="/showall" exact component={ShowAll} displayType={0} />
         </Switch>
       </Router>
     );
