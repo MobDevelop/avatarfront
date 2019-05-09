@@ -1,11 +1,7 @@
 import React from "react";
 import "./signup.scss";
-import axios from "axios";
 import url from "../url.js";
 export class SignUp extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   signupFunc = e => {
     var formData = {};
     formData["firstname"] = this.refs.s_firstname.value;
@@ -27,6 +23,9 @@ export class SignUp extends React.Component {
         // handle your response;
         alert(response.status);
         if (response.code === 2) this.props.history.push("/");
+      })
+      .catch(err => {
+        alert(err);
       });
     e.preventDefault();
   };

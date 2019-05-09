@@ -1,5 +1,4 @@
 import React from "react";
-import { Login } from "./scenes/Login/login.js";
 import Routes from "./scenes/Route";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
