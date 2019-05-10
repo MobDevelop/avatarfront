@@ -9,7 +9,7 @@
     width: 100%;
     flex-wrap: wrap;
     .myCol {
-      width: 24%;
+      width: 25%;
       .card {
         padding: 0.5em;
         .imageStyle {
@@ -31,6 +31,33 @@
         button:focus {
           outline: 0;
         }
+      }
+    }
+  }
+}
+@media (max-width: 992px) {
+  .showContainer {
+    .myRow {
+      .myCol {
+        width: 33%;
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .showContainer {
+    .myRow {
+      .myCol {
+        width: 50%;
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .showContainer {
+    .myRow {
+      .myCol {
+        width: 100%;
       }
     }
   }

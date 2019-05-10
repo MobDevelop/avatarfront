@@ -86,6 +86,7 @@ export class ShowAll extends React.Component {
               spinner
               text="Please wait..."
             >
+              <meta name="viewport" content="width=device-width" />
               <Header />
               <div className="showContainer">
                 <div className="myRow">
